@@ -1,0 +1,48 @@
+kafka:
+  brokers: 127.0.0.1:9092
+  schemaregistry: http://127.0.0.1:8081
+  offset:
+    topic: "__consumer_offsets"
+    partitions: 50
+    reset: false
+  healthcheck:
+    topic: "health"
+  sasl:
+    enable: false
+    security: 
+      protocol: "PLAINTEXT"
+    security.protocol: "PLAINTEXT"
+    mechanism: "PLAIN"
+
+zookeeper:
+  uris: 127.0.0.1:2181
+
+jmx:
+  kafka:
+    jmxurl: 127.0.0.1:19999,127.0.0.1:29999,127.0.0.1:39999
+  zookeeper:
+    jmxurl: 127.0.0.1:49999
+
+server:
+  port: 8121
+  context-path: /
+  debug: false
+  security:
+    check: false
+    checkInitDelay: 30
+    checkSecurityInterval: 5
+
+spring:
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    consumer:
+      group-id: "__kafka-zk-rest"
+  mvc:
+    throw-exception-if-no-handler-found: true
+  output:
+    ansi:
+      enabled: detect
+  aop:
+    auto: true
+  main:
+    allow-bean-definition-overriding: true
